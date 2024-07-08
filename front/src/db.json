@@ -1,0 +1,298 @@
+{
+  "users": [
+    {
+      "id": "001",
+      "login": "photograph",
+      "password": "qwer123",
+      "register_at": "2023-12-12"
+    },
+    {
+      "login": "Lolita",
+      "password": "123456",
+      "register_at": "27.05.2024 19:24",
+      "user_status": 1,
+      "id": "oURLRw7"
+    },
+    {
+      "login": "Anna",
+      "password": "",
+      "register_at": "02.06.2024 12:00",
+      "user_status": 1,
+      "id": "PyItiBz"
+    },
+    {
+      "id": "0dc2",
+      "login": "testUser",
+      "password": "123456",
+      "register_at": "30.06.2024 19:41"
+    }
+  ],
+  "clients": [
+    {
+      "id": "001",
+      "name": "Mariana",
+      "birthday": "1999-06-15",
+      "phone": "79991234567",
+      "email": "mar@mail.ru",
+      "telegram": "@mar.tel",
+      "WhatsApp": "",
+      "owner_id": "001"
+    },
+    {
+      "id": "003",
+      "name": "Elena",
+      "birthday": "2003-04-05",
+      "phone": "78889713254",
+      "email": "ena@mail.ru",
+      "telegram": "",
+      "WhatsApp": "",
+      "owner_id": "001"
+    },
+    {
+      "name": "Лидия",
+      "phone": "+7 (999)369-25-14",
+      "birthday": "01.25.1990",
+      "email": "lida@ya.io",
+      "telegram": "userName",
+      "WhatsApp": "",
+      "owner_id": "001",
+      "id": "--R6frF"
+    },
+    {
+      "name": "Татьяна",
+      "phone": "+7 (999) 123-45-67",
+      "birthday": "1971-08-22",
+      "email": "tata@mail.ru",
+      "telegram": "tatelegarm",
+      "WhatsApp": "whatstat",
+      "owner_id": "001",
+      "id": "YEPwg7a"
+    },
+    {
+      "name": "Ольга",
+      "phone": "+7 999 321654789",
+      "birthday": "1990-02-20",
+      "email": "olya@mail.ru",
+      "telegram": "Olga",
+      "WhatsApp": "7999321654789",
+      "owner_id": "oURLRw7",
+      "id": "jQstpqj"
+    },
+    {
+      "name": "Анна",
+      "phone": "+7 666 3692514",
+      "birthday": "1995-03-06",
+      "email": "anna@mail.ru",
+      "telegram": "anya",
+      "WhatsApp": "76663692514",
+      "owner_id": "oURLRw7",
+      "id": "vDNQCtI"
+    },
+    {
+      "name": "Максим",
+      "phone": "77779632541",
+      "birthday": "1999-08-30",
+      "email": "",
+      "telegram": "",
+      "WhatsApp": "",
+      "owner_id": "oURLRw7",
+      "id": "nNG087q"
+    }
+  ],
+  "projects": [
+    {
+      "client": "Ольга",
+      "date_shooting": "2024-06-09",
+      "shooting_time": "16:00",
+      "duration_shooting": "1",
+      "booking_location": "Клиент",
+      "payment_location": 0,
+      "cost_shooting": 3500,
+      "prepayment": 1750,
+      "calculation": 1750,
+      "deadline": "2024-06-16",
+      "projectCompleted": "",
+      "owner_id": "oURLRw7",
+      "client_id": "jQstpqj",
+      "id": "1"
+    },
+    {
+      "client": "Анна",
+      "date_shooting": "2024-06-15",
+      "shooting_time": "17:00",
+      "duration_shooting": "1",
+      "booking_location": "Фотограф",
+      "payment_location": 1500,
+      "cost_shooting": 3500,
+      "prepayment": 1750,
+      "calculation": 1750,
+      "deadline": "2024-06-29",
+      "projectCompleted": "",
+      "owner_id": "oURLRw7",
+      "client_id": "vDNQCtI",
+      "id": "2"
+    },
+    {
+      "client": "Максим",
+      "date_shooting": "2024-06-02",
+      "shooting_time": "18:00",
+      "duration_shooting": "2",
+      "booking_location": "Фотограф",
+      "payment_location": 0,
+      "cost_shooting": 6000,
+      "prepayment": 3000,
+      "calculation": 3000,
+      "deadline": "2024-06-17",
+      "projectCompleted": "",
+      "owner_id": "oURLRw7",
+      "client_id": "nNG087q",
+      "id": "3"
+    },
+    {
+      "client": "Ольга",
+      "date_shooting": "2024-05-05",
+      "shooting_time": "10:00",
+      "duration_shooting": "2",
+      "booking_location": "Фотограф",
+      "payment_location": 1200,
+      "cost_shooting": 6000,
+      "prepayment": 3000,
+      "calculation": 3000,
+      "deadline": "2024-05-19",
+      "projectCompleted": "",
+      "owner_id": "oURLRw7",
+      "client_id": "jQstpqj",
+      "id": "4"
+    },
+    {
+      "client": "Mariana",
+      "date_shooting": "2024-05-02",
+      "shooting_time": "12:00",
+      "duration_shooting": "1",
+      "booking_location": "Фотограф",
+      "payment_location": 1200,
+      "cost_shooting": 4000,
+      "prepayment": 2000,
+      "calculation": 2000,
+      "deadline": "",
+      "projectCompleted": "",
+      "owner_id": "001",
+      "client_id": "001",
+      "id": "5"
+    },
+    {
+      "client": "Elena",
+      "date_shooting": "2024-06-03",
+      "shooting_time": "18:00",
+      "duration_shooting": "1",
+      "booking_location": "Клиент",
+      "payment_location": 0,
+      "cost_shooting": 4000,
+      "prepayment": 2000,
+      "calculation": 2000,
+      "deadline": "2024-06-17",
+      "projectCompleted": "",
+      "owner_id": "001",
+      "client_id": "003",
+      "id": "6"
+    },
+    {
+      "client": "Лидия",
+      "date_shooting": "2024-06-05",
+      "shooting_time": "13:00",
+      "duration_shooting": "2",
+      "booking_location": "Фотограф",
+      "payment_location": 0,
+      "cost_shooting": 7000,
+      "prepayment": 3500,
+      "calculation": 3500,
+      "deadline": "2024-06-19",
+      "projectCompleted": "",
+      "owner_id": "001",
+      "client_id": "--R6frF",
+      "id": "7"
+    },
+    {
+      "client": "Татьяна",
+      "date_shooting": "2024-06-16",
+      "shooting_time": "15:00",
+      "duration_shooting": "2",
+      "booking_location": "Фотограф",
+      "payment_location": 2000,
+      "cost_shooting": 7000,
+      "prepayment": 3500,
+      "calculation": 0,
+      "deadline": "2024-06-30",
+      "projectCompleted": "",
+      "owner_id": "001",
+      "client_id": "YEPwg7a",
+      "id": "8"
+    }
+  ],
+  "finances": [
+    {
+      "id": "001",
+      "date": "2024-06-29",
+      "expense_item": "ретушер",
+      "sum": 3000,
+      "owner_id": "001"
+    },
+    {
+      "id": "002",
+      "date": "2024-06-10",
+      "expense_item": "реквизит",
+      "sum": 500,
+      "owner_id": "oURLRw7"
+    },
+    {
+      "id": "003",
+      "date": "2024-06-15",
+      "expense_item": "студия",
+      "sum": 2000,
+      "owner_id": "YEPwg7a"
+    },
+    {
+      "date": "2024-06-05",
+      "expense_item": "Отражатель",
+      "sum": 2670,
+      "owner_id": "001",
+      "id": "5t_A_c5"
+    },
+    {
+      "date": "2024-06-02",
+      "expense_item": "ретушер",
+      "sum": 3000,
+      "owner_id": "001",
+      "id": "UmIBuYM"
+    },
+    {
+      "date": "2024-06-16",
+      "expense_item": "студия",
+      "sum": 1700,
+      "owner_id": "001",
+      "id": "LCFBHEE"
+    }
+  ],
+  "sessions": [
+    {
+      "hash": "0.30297097312221077380911538057262077927589416503906",
+      "user": {
+        "id": "001",
+        "login": "photograph",
+        "password": "qwer123",
+        "registeredAt": "2023-12-12"
+      },
+      "id": "1"
+    },
+    {
+      "id": "a6cb",
+      "hash": "0.10610576026342921629463944555027410387992858886719",
+      "user": {
+        "id": "001",
+        "login": "photograph",
+        "password": "qwer123",
+        "registeredAt": "2023-12-12"
+      }
+    }
+  ]
+}
