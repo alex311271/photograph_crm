@@ -7,24 +7,24 @@ const PaginationContainer = ({ className, page, lastPage, setPage }) => {
 			{page !== 1 ? (
 					<>
 						<Icon id="fa-angle-double-left" size="24px" onClick={()=>setPage(1)} />
-						<Icon id="fa-angle-left" size="24px" onClick={()=>setPage(page - 1)} />
+						<Icon id="fa-angle-left" size="24px" margin="0 10px" onClick={()=>setPage(page - 1)} />
 					</>
 			):(
 				<>
 					<Icon id="fa-angle-double-left" size="24px" disabled={page===1} inactive={true} />
-					<Icon id="fa-angle-left" size="24px" disabled={page===1} inactive={true} />
+					<Icon id="fa-angle-left" size="24px" margin="0 10px" disabled={page===1} inactive={true} />
 				</>
 			)}
 
 			<div className='current-page'>Страница: {page}</div>
 			{page !== lastPage ? (
 				<>
-					<Icon id="fa-angle-right" size="24px" onClick={()=>setPage(page + 1)} />
+					<Icon id="fa-angle-right" size="24px" margin="0 10px" onClick={()=>setPage(page + 1)} />
 					<Icon id="fa-angle-double-right" size="24px" onClick={()=>setPage(lastPage)} />
 				</>
 			):(
 			<>
-				<Icon id="fa-angle-right" size="24px" disabled={page===1} inactive={true} />
+				<Icon id="fa-angle-right" size="24px" margin="0 10px" disabled={page===lastPage} inactive={true} />
 				<Icon id="fa-angle-double-right" size="24px" disabled={page===lastPage} inactive={true} />
 			</>
 			)}
@@ -36,7 +36,7 @@ const PaginationContainer = ({ className, page, lastPage, setPage }) => {
 export const Pagination = styled(PaginationContainer)`
 	display: flex;
 	justify-content: center;
-	margin: 0 0 20px;
+	margin: ${({margin = '0 0 0 20px'}) => margin};
 	padding: 0 35px;
 
 	& .current-page {

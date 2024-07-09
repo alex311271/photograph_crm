@@ -65,7 +65,7 @@ const onSearch = ({target}) => {
 						/>
 					);
 				})}
-				{lastPage > 1 && <Pagination page={page} lastPage={lastPage} setPage={setPage} />}
+				{lastPage > 1 && <Pagination margin="20px 0 10px" page={page} lastPage={lastPage} setPage={setPage} />}
 			</ContentCard>
 		</div>
 	);

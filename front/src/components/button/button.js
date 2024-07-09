@@ -18,7 +18,7 @@ export const Button = styled(ButtonContainer)`
 	justify-content: center;
 	align-items: center;
 	background-color: #FFF;
-	margin: ${(margin = '0 0 0 0') => margin}
+	margin: ${({margin = '0 0 0 0'}) => margin}
 
 	&:hover {
 		cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};

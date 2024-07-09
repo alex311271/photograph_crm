@@ -52,12 +52,11 @@ const ClientsContainer = ({ className }) => {
 
 	return (
 		<div className={className}>
-			<div className="clients-list">
+
 				<ContentCard width='700px'>
 					<H2>Контакты</H2>
 					<Search onChange={onSearch} searchPhrase={searchPhrase} placeholder="Поиск по имени" />
 					{clients.map(({ id, name, phone, telegram, WhatsApp }) => {
-
 							return (
 								<ClientRow
 									key={id}
@@ -72,11 +71,10 @@ const ClientsContainer = ({ className }) => {
 						}
 					)}
 					<Link to={'/client'}>
-					<Button width="170px">Добавить контакт</Button>
+					<Button width="170px" margin="20px 0 20px">Добавить контакт</Button>
 				</Link>
 					{lastPage > 1 && <Pagination page={page} lastPage={lastPage} setPage={setPage} />}
-					</ContentCard>
-			</div>
+				</ContentCard>
 		</div>
 	);
 };

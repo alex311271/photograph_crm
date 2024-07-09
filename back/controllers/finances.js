@@ -19,7 +19,7 @@ function deleteFinance( id ) {
 }
 
 //get list for client wit (filter), sort, search an pagination
-async function getFinances(userId, search = '', limit = 10000, page = 1){
+async function getFinances(userId, search = '', limit = 6, page = 1){
 	const [finances, count] = await Promise.all([
 		Finance.find({owner_id: userId, expense_item: { $regex: search, $options: 'i' }})
 		.limit(limit)

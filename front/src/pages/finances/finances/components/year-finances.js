@@ -20,12 +20,12 @@ export const YearFinances = () => {
 	const [shouldSearch, setShouldSearch] = useState(false);
 
 	useEffect(() => {
-		request(`/finances?userId=${userId}&search=${searchPhrase}&limit=${PAGINATION_LIMIT}&page=${page}`).then(({ data:  {finances} }) => {
-			setFinances(finances);
+		request(`/finances?userId=${userId}&search=${searchPhrase}&limit=${PAGINATION_LIMIT}&page=${page}`).then(({ data:  {finances, lastPage} }) => {
+			setFinances(getCurrentYearData(finances, currentYear));
 			setLastPage(lastPage);
 		});
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [request, shouldUpdateFinancesList, shouldSearch]);
+	}, [request, shouldUpdateFinancesList, shouldSearch, page]);
 
 	const onFinanceRemove = (id) => {
 		dispatch(openModal({
@@ -46,7 +46,7 @@ export const YearFinances = () => {
 		dispatch(loadFinanceAsync(financeId));
 		navigate(`/finance/${financeId}`);
 	};
-	const yearFinances = getCurrentYearData(finances, currentYear);
+	// const yearFinances = getCurrentYearData(finances, currentYear);
 
 	const startDelaySearch = useMemo(() => debounce(setShouldSearch, 2000), [])
 
@@ -58,8 +58,8 @@ export const YearFinances = () => {
 	return (
 		<ContentCard width="600px">
 			<H2>Расходы за год</H2>
-			<Search onChange={onSearch} searchPhrase={searchPhrase} placeholder="Поиск по имени" />
-			{yearFinances.map(({ id, date, expenseItem, sum }) => {
+			<Search onChange={onSearch} searchPhrase={searchPhrase} placeholder="Поиск по наименованию расхода" />
+			{finances.map(({ id, date, expenseItem, sum }) => {
 				return (
 					<FinanceRow
 						key={id}
@@ -76,7 +76,7 @@ export const YearFinances = () => {
 			<Link to={'/finance/add'}>
 				<Button width="170px">Добавить расход</Button>
 			</Link>
-			{lastPage > 1 && <Pagination page={page} lastPage={lastPage} setPage={setPage} />}
+			{lastPage > 1 && <Pagination margin="20px 0 10px" page={page} lastPage={lastPage} setPage={setPage} />}
 		</ContentCard>
 	);
 };
