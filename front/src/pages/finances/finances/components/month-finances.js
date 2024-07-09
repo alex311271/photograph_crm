@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FinanceRow } from '.';
 import { selectUserId } from '../../../../selectors';
+import { removeFinanceAsync, openModal, CLOSE_MODAL } from '../../../../actions';
 import styled from 'styled-components';
 import { debounce, getCurrentMonthData, request } from '../../../../utils';
 import { ContentCard, H2, Button, Search, Pagination } from '../../../../components';
@@ -16,6 +17,7 @@ const MonthFinancesContainer = ({ className }) => {
 	const [page, setPage] = useState(1);
 	const [searchPhrase, setSearchPhrase] = useState('');
 	const [shouldSearch, setShouldSearch] = useState(false);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		request(`/finances?userId=${userId}&search=${searchPhrase}&limit=${PAGINATION_LIMIT}&page=${page}`).then(({ data: { finances } }) => {
@@ -25,10 +27,16 @@ const MonthFinancesContainer = ({ className }) => {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [request, shouldUpdateFinancesList, shouldSearch]);
 
-	const onFinanceRemove = (financeId) => {
-		request('removeFinance', financeId).then(() => {
-			setShouldUpdateFinancesList(!shouldUpdateFinancesList);
-		});
+	const onFinanceRemove = (id) => {
+		dispatch(openModal({
+			text: 'Удалить расход?',
+			onConfirm: () => {dispatch(removeFinanceAsync(id),
+				dispatch(CLOSE_MODAL),
+				setShouldUpdateFinancesList(!shouldUpdateFinancesList))
+			},
+			onCancel: () => dispatch(CLOSE_MODAL)
+		})
+	);
 	};
 
 

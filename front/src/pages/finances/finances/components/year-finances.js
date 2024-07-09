@@ -6,8 +6,7 @@ import { FinanceRow } from '.';
 import { selectFinance, selectUserId } from '../../../../selectors';
 import { debounce, getCurrentYearData, request } from '../../../../utils';
 import { currentYear, PAGINATION_LIMIT } from '../../../../constants';
-import { loadFinanceAsync, openModal, CLOSE_MODAL } from '../../../../actions';
-import { removeYearFinanceAsync } from '../../../../actions/remove-year-finance-async';
+import { loadFinanceAsync, removeFinanceAsync, openModal, CLOSE_MODAL } from '../../../../actions';
 
 export const YearFinances = () => {
 	const userId = useSelector(selectUserId);
@@ -31,7 +30,7 @@ export const YearFinances = () => {
 	const onFinanceRemove = (id) => {
 		dispatch(openModal({
 				text: 'Удалить расход?',
-				onConfirm: () => {dispatch(removeYearFinanceAsync(id),
+				onConfirm: () => {dispatch(removeFinanceAsync(id),
 					dispatch(CLOSE_MODAL),
 					setShouldUpdateFinancesList(!shouldUpdateFinancesList))
 				},

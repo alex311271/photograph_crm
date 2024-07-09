@@ -13,5 +13,5 @@ export * from './load-finance-async';
 export * from './close-modal';
 export * from './open-modal';
 export * from './remove-client-async';
-export * from './remove-year-finance-async'
+export * from './remove-finance-async'
 export * from './remove-project-async';
