@@ -13,3 +13,4 @@ export * from './finances/finances/components';
 export * from './finances/finances/components';
 export * from './finance/finance';
 export * from './main/main';
+export * from './notfound-page/notfound-page';

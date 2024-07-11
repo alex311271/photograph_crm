@@ -16,7 +16,8 @@ import {
 	FinanceForm,
 	EditFinanceForm,
 	Finance,
-	Main
+	Main,
+	NotfoundPage
 } from './pages';
 import { useDispatch } from 'react-redux';
 import { useLayoutEffect } from 'react';
@@ -77,7 +78,7 @@ export const App = () => {
 					<Route path="/finance/add" element={<FinanceForm />}></Route>
 					<Route path="/finance/:id" element={<Finance/>}></Route>
 					<Route path="/finance/:id/edit" element={<EditFinanceForm/>}></Route>
-					<Route path="*" element={<div>Error</div>}></Route>
+					<Route path="*" element={<NotfoundPage/>}></Route>
 				</Routes>
 			</Content>
 			<Footer />
