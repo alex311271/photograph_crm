@@ -19,7 +19,9 @@ const ClientContainer = ({ className }) => {
 		dispatch(loadClientAsync(params.id));
 	}, [dispatch, params.id, isEditing]);
 
-	return (
+	console.log(client)
+
+	return client ? (<div>Такая запись не найдена</div>) : (
 		<div className={className}>
 			{isEditing ? (
 				<EditClientForm client={client} />

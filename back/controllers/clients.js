@@ -34,24 +34,16 @@ async function getClients(userId, search = '', limit = 6, page = 1) {
 	}
 }
 
-async function getClientProjects(userId){
-
-    const projects = await Project.find({owner_id: userId})
-		// 	.limit(limit)
-        // 	.skip((page - 1) * limit)
-		// 	.sort({date_shooting: -1 , shooting_time: 1}),
-		// Project.countDocuments(),
-    
-    return {
-        projects,
-        // lastPage: Math.ceil(count/limit)
-    }
-}
 
 //get item
-function getClient(id) {
-	return Client.findById(id)
+async function getClient(id) {
+	const client = await Client.findById(id)
+	if(!client){
+		throw new Error ('Такая запись не существует')
+	}
+	return client
 }
+
 
 module.exports = {
 	addClient,
@@ -59,5 +51,4 @@ module.exports = {
 	deleteClient,
 	getClient,
 	getClients,
-	getClientProjects
 }

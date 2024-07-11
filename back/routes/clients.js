@@ -28,25 +28,6 @@ router.post('/', authenticated, async (req, res) => {
 	res.send({ data: newClient })
 })
 
-// router.post('/:id/projects', authenticated, async (req, res) => {
-// 	const newProject = await addProject(req.params.id,{
-// 		client: req.body.client,
-// 		date_shooting:req.body.dateShooting,
-// 		shooting_time: req.body.shootingTime,
-// 		duration_shooting: req.body.durationShooting,
-// 		booking_location: req.body.bookingLocation,
-// 		payment_location: req.body.paymentLocation,
-// 		cost_shooting: req.body.costShooting,
-// 		prepayment: req.body.prepayment,
-// 		calculation: req.body.calculation,
-// 		deadline: req.body.deadline,
-// 		project_completed: req.body.projectCompleted,
-// 		owner_id: req.user.id,
-// 		client_id: req.params.clientId,
-// 	})
-// 	res.send({ data: mapProject(newProject) })
-// });
-
 router.get('/', authenticated, async (req, res) => {
 	const { clients, lastPage } = await getClients(
 		req.user.id,
@@ -58,14 +39,14 @@ router.get('/', authenticated, async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
+	try{
 	const client = await getClient(req.params.id)
 	res.send({ data: mapClient(client) })
+}catch (e){
+	res.send({ error: e.message || 'Unknown error' })
+}
 })
 
-router.get('/:id/projects', authenticated, async (req, res) => {
-	const projects = await getClientProjects(req.user.id)
-	res.send({ data: { projects: projects.map(mapProject) } })
-})
 
 router.patch('/:id', authenticated, async (req, res) => {
 	const UpdateClient = await editClient( req.params.id, {

@@ -12,5 +12,5 @@ export const Logo = styled(LogoContainer)`
 		color: #fff;
 	}
 
-	
+
 `;

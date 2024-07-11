@@ -34,10 +34,9 @@ const ControlPanelContainer = ({ className }) => {
 	return (
 		<div className={className}>
 			{!userId ? (
-				// <Button width={'100px'}>
-				// 	<Link to={'/login'}>Войти</Link>
-				// </Button>
-				null
+				<Button width={'100px'}>
+					<Link to={'/login'}>Войти</Link>
+				</Button>
 			) : (
 				<>
 					<Icon id='fa fa-user-circle-o fa-2x' margin='0 0 0 15px' />

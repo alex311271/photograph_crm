@@ -16,7 +16,7 @@ import {
 	FinanceForm,
 	EditFinanceForm,
 	Finance,
-
+	Main
 } from './pages';
 import { useDispatch } from 'react-redux';
 import { useLayoutEffect } from 'react';
@@ -59,7 +59,7 @@ export const App = () => {
 			<Header />
 			<Content>
 				<Routes>
-					<Route path="/" element={<Authorization />}></Route>
+					<Route path="/" element={<Main />}></Route>
 					<Route path="/login" element={<Authorization />}></Route>
 					<Route path="/register" element={<Registration />}></Route>
 					<Route path="/clients" element={<Clients />}></Route>

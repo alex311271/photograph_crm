@@ -12,3 +12,4 @@ export * from './finances/finances/components';
 export * from './finances/finances/components';
 export * from './finances/finances/components';
 export * from './finance/finance';
+export * from './main/main';
