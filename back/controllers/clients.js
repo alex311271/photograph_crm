@@ -38,8 +38,8 @@ async function getClients(userId, search = '', limit = 6, page = 1) {
 //get item
 async function getClient(id) {
 	const client = await Client.findById(id)
-	if(!client){
-		throw new Error ('Такая запись не существует')
+	if(client.id === ''){
+		throw new Error ('Такая запись несуществует')
 	}
 	return client
 }

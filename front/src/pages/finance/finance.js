@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Link, useParams, useMatch } from 'react-router-dom';
 import { loadFinanceAsync } from '../../actions/index.js';
 import { DataLine } from '../components/data-line.js';
-import { Button, ContentCard } from '../../components';
+import { Button, ContentCard, ErrorPage } from '../../components';
 import { selectFinance } from '../../selectors/index.js';
 import { FinanceForm } from '../finances/finances/components/finance-form.js';
 
@@ -18,7 +18,7 @@ const FinanceContainer = ({ className }) => {
 		dispatch(loadFinanceAsync(params.id));
 	}, [dispatch, params.id, isEditing]);
 
-	return (
+	return finance.id === '' ? (<ErrorPage>Такая запись несуществует</ErrorPage>) : (
 		<div className={className}>
 			{isEditing ? (
 				<FinanceForm finance={finance} />

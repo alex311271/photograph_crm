@@ -36,7 +36,11 @@ async function getFinances(userId, search = '', limit = 6, page = 1){
 
 //get item
 function getFinance(id){
-	return Finance.findById(id)
+	const finance = Finance.findById(id)
+	if(!finance){
+		throw new Error ("Такая запись несуществует")
+	}
+	return finance
 }
 
 module.exports = {

@@ -36,8 +36,12 @@ router.get('/', authenticated, async (req, res) => {
 
 
 router.get('/:id', authenticated, async (req, res) => {
-	const project = await getProject(req.params.id)
-	res.send({ data:  mapProject(project) })
+	try{
+		const project = await getProject(req.params.id)
+		res.send({ data:  mapProject(project) })
+	}catch(e){
+		res.send({ error: e.message || 'Unknown error' })
+	}
 })
 
 router.patch('/:id', authenticated, async (req, res) => {

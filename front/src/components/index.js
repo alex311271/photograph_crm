@@ -10,3 +10,4 @@ export * from './content-card/content-card';
 export * from './search/search';
 export * from './pagination/pagination';
 export * from './modal/modal';
+export * from './error-page/error-page';

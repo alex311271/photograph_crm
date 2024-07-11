@@ -18,4 +18,8 @@ export const ErrorPage = styled(ErrorPageContainer)`
 & .h2 {
 	color: red;
 }
+
+& .error-text{
+	font-size: 20px;
+}
 `

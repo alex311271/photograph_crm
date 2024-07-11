@@ -5,7 +5,7 @@ import { Link, useParams, useMatch } from 'react-router-dom';
 import { loadClientAsync } from '../../actions';
 import { DataLine } from '../components/data-line.js';
 import { NAMES_TITLE } from '../../constants';
-import { Button } from '../../components/index.js';
+import { Button, ErrorPage } from '../../components';
 import { selectClient } from '../../selectors';
 import { EditClientForm } from './components/edit-client-form.js';
 
@@ -19,9 +19,7 @@ const ClientContainer = ({ className }) => {
 		dispatch(loadClientAsync(params.id));
 	}, [dispatch, params.id, isEditing]);
 
-	console.log(client)
-
-	return client ? (<div>Такая запись не найдена</div>) : (
+	return client.id === '' ? (<ErrorPage>Такая запись несуществует</ErrorPage>) : (
 		<div className={className}>
 			{isEditing ? (
 				<EditClientForm client={client} />
@@ -73,7 +71,7 @@ export const Client = styled(ClientContainer)`
 	& .buttons{
 	margin-top: 40px;
 	display: flex;
-	width: 460px;
+	width: 500px;
 	justify-content: space-between;
 	}
 `;

@@ -40,10 +40,10 @@ router.get('/', authenticated, async (req, res) => {
 
 router.get('/:id', async (req, res) => {
 	try{
-	const client = await getClient(req.params.id)
-	res.send({ data: mapClient(client) })
-}catch (e){
-	res.send({ error: e.message || 'Unknown error' })
+		const client = await getClient(req.params.id)
+		res.send({ data: mapClient(client) })
+	}catch (e){
+		res.send({ error: e.message || 'Unknown error' })
 }
 })
 

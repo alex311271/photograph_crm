@@ -26,8 +26,12 @@ router.get('/', authenticated, async(req, res) => {
 })
 
 router.get('/:id', authenticated, async (req, res) => {
-	const finance = await getFinance(req.params.id)
-	res.send({data: mapFinance(finance)})
+	try{
+		const finance = await getFinance(req.params.id)
+		res.send({data: mapFinance(finance)})
+}catch(e){
+	res.send({ error: e.message || 'Unknown error' })
+}
 })
 
 router.patch('/:id', authenticated, async (req, res) => {

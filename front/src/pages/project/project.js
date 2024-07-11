@@ -5,7 +5,7 @@ import { Link, useParams, useMatch } from 'react-router-dom';
 import { loadProjectAsync } from '../../actions/index.js';
 import { DataLine } from '../components/data-line.js';
 import { NAMES_TITLE } from '../../constants/index.js';
-import { Button, H2 } from '../../components/index.js';
+import { Button, ErrorPage, H2 } from '../../components/index.js';
 import { selectProject } from '../../selectors/index.js';
 import { EditProjectForm } from '../project/components/edit-project-form';
 
@@ -21,7 +21,7 @@ const ProjectContainer = ({ className }) => {
 
 
 
-	return (
+	return project.id === '' ? (<ErrorPage>Такая запись не существует</ErrorPage>) : (
 		<div className={className}>
 			{isEditing ? (
 				<EditProjectForm project={project} />

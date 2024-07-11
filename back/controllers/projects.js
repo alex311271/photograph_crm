@@ -43,7 +43,11 @@ async function getProjects(userId, search = '', limit = 10000, page = 1){
 
 //get item for project
 function getProject(id){
-    return Project.findById(id)
+    const project = Project.findById(id)
+    if(!project){
+        throw new Error ("Такая запись несуществует")
+    }
+    return project
 }
 
 module.exports = {
