@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button, ContentCard, H2, Pagination, Search } from '../../../../components';
 import { FinanceRow } from '.';
 import { selectFinance, selectUserId } from '../../../../selectors';
-import { debounce, getCurrentYearData, request } from '../../../../utils';
-import { currentYear, PAGINATION_LIMIT } from '../../../../constants';
+import { debounce, getEndDate, getStartDate, request } from '../../../../utils';
+import { PAGINATION_LIMIT } from '../../../../constants';
 import { loadFinanceAsync, removeFinanceAsync, openModal, CLOSE_MODAL } from '../../../../actions';
 
 export const YearFinances = () => {
@@ -13,15 +13,16 @@ export const YearFinances = () => {
 	const [finances, setFinances] = useState([]);
 	const [shouldUpdateFinancesList, setShouldUpdateFinancesList] = useState(false);
 	const dispatch = useDispatch();
-	const finance = useSelector(selectFinance);
 	const [lastPage, setLastPage] = useState(1);
 	const [page, setPage] = useState(1);
 	const [searchPhrase, setSearchPhrase] = useState('');
 	const [shouldSearch, setShouldSearch] = useState(false);
+	const startDate = getStartDate();
+	const endDate = getEndDate();
 
 	useEffect(() => {
-		request(`/finances?userId=${userId}&search=${searchPhrase}&limit=${PAGINATION_LIMIT}&page=${page}`).then(({ data:  {finances, lastPage} }) => {
-			setFinances(getCurrentYearData(finances, currentYear));
+		request(`/finances?userId=${userId}&startDate=${startDate}&endDate=${endDate}&search=${searchPhrase}&limit=${PAGINATION_LIMIT}&page=${page}`).then(({ data:  {finances, lastPage} }) => {
+			setFinances(finances);
 			setLastPage(lastPage);
 		});
 	// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,7 +70,6 @@ export const YearFinances = () => {
 						sum={sum}
 						onFinanceRemove={() => onFinanceRemove(id)}
 						onEdit={() => onEdit(id)}
-						finance={finance}
 					/>
 				);
 			})}

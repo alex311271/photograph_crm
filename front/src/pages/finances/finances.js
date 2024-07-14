@@ -6,15 +6,18 @@ import { Button, H2, Icon } from '../../components';
 import { useSelector } from 'react-redux';
 import { selectUserId } from '../../selectors';
 import { DataLine } from '../components/data-line';
-import { getCurrentMonthData, getCurrentYearData, request } from '../../utils';
+import { getCurrentMonthData, getCurrentYearData, getEndDate, getStartDate, request } from '../../utils';
 
 const FinancesContainer = ({ className }) => {
 	const [projects, setProjects] = useState([]);
 	const [finances, setFinances] = useState([])
 	const [errorMessage, setErrorMessage] = useState(null);
 	const userId = useSelector(selectUserId);
+	const startDate = getStartDate();
+	const endDate = getEndDate()
+
 	useEffect(() => {
-		Promise.all([request(`/projects?userId=${userId}`), request(`/finances?userId=${userId}`)]).then(
+		Promise.all([request(`/projects?userId=${userId}`), request(`/finances?userId=${userId}&startDate=${startDate}&endDate=${endDate}`)]).then(
 			([
 				{
 					data: { projects },
@@ -41,9 +44,9 @@ const FinancesContainer = ({ className }) => {
 			return (acc += prepayment + calculation + paymentLocation);
 		}, 0);
 
+	console.log(projects, currentYearProjects)
 
-
-	const currentMonthProjects = getCurrentMonthData(projects, currentMonth);
+	const currentMonthProjects = getCurrentMonthData(currentYearProjects, currentMonth);
 
 	const totalMonth = currentMonthProjects.reduce(
 		(acc, { prepayment, calculation, paymentLocation }) => {
@@ -52,16 +55,14 @@ const FinancesContainer = ({ className }) => {
 		0,
 	);
 
-	const yearCustomerDebt = currentYearProjects.reduce(
+	const yearCustomerDebt = projects.reduce(
 		(acc, { costShooting, calculation, prepayment }) => {
 			return (acc += (costShooting - prepayment) - calculation);
 		},
 		0
 	);
 
-	const currentYearFinance = getCurrentYearData(finances, currentYear);
-
-	const totalYearFinance = currentYearFinance.reduce((acc, { sum }) => {
+	const totalYearFinance = finances.reduce((acc, { sum }) => {
 		return (acc += sum);
 	}, 0);
 

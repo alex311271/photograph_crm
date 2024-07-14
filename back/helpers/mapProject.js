@@ -2,7 +2,7 @@ module.exports = function (project) {
 	return {
 		id: project.id,
 		client: project.client,
-    dateShooting:project.date_shooting.toISOString().substring(0, 10),
+    dateShooting:project.date_shooting?.toISOString().substring(0, 10),
     shootingTime: project.shooting_time,
     durationShooting: project.duration_shooting,
     costShooting: project.cost_shooting,

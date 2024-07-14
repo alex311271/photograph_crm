@@ -55,7 +55,7 @@ router.patch('/:id', authenticated, async (req, res) => {
 		cost_shooting: req.body.costShooting,
 		prepayment: req.body.prepayment,
 		calculation: req.body.calculation,
-		deadline: req.body.deadline,
+		deadline: req.body.date,
 		project_completed: req.body.projectCompleted,
 	})
 	res.send({ data: mapProject(UpdateProject) })
