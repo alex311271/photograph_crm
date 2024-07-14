@@ -5,9 +5,9 @@ import { FinanceRow } from '.';
 import { selectUserId } from '../../../../selectors';
 import { removeFinanceAsync, openModal, CLOSE_MODAL } from '../../../../actions';
 import styled from 'styled-components';
-import { debounce, getCurrentMonthData, request } from '../../../../utils';
+import { debounce, getEndDate, getStartDate,  request } from '../../../../utils';
 import { ContentCard, H2, Button, Search, Pagination } from '../../../../components';
-import { currentMonth, PAGINATION_LIMIT } from '../../../../constants';
+import { currentMonth, currentYear, PAGINATION_LIMIT } from '../../../../constants';
 
 const MonthFinancesContainer = ({ className }) => {
 	const userId = useSelector(selectUserId);
@@ -18,14 +18,17 @@ const MonthFinancesContainer = ({ className }) => {
 	const [searchPhrase, setSearchPhrase] = useState('');
 	const [shouldSearch, setShouldSearch] = useState(false);
 	const dispatch = useDispatch();
+	const startDate = getStartDate(currentYear, currentMonth, "01");
+	const endDate = getEndDate(currentYear, currentMonth)
+
 
 	useEffect(() => {
-		request(`/finances?userId=${userId}&search=${searchPhrase}&limit=${PAGINATION_LIMIT}&page=${page}`).then(({ data: { finances } }) => {
+		request(`/finances?userId=${userId}&startDate=${startDate}&endDate=${endDate}&search=${searchPhrase}&limit=${PAGINATION_LIMIT}&page=${page}`).then(({ data: { finances, lastPage } }) => {
 			setFinances(finances);
 			setLastPage(lastPage)
 		});
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [request, shouldUpdateFinancesList, shouldSearch]);
+	}, [request, shouldUpdateFinancesList, shouldSearch, page]);
 
 	const onFinanceRemove = (id) => {
 		dispatch(openModal({
@@ -39,9 +42,6 @@ const MonthFinancesContainer = ({ className }) => {
 	);
 	};
 
-
-	const monthFinances = getCurrentMonthData(finances, currentMonth);
-
 	const startDelaySearch = useMemo(() => debounce(setShouldSearch, 2000), [])
 
 	const onSearch = ({target}) => {
@@ -53,7 +53,7 @@ const MonthFinancesContainer = ({ className }) => {
 		<ContentCard width="600px">
 			<H2 >Расходы за месяц</H2>
 			<Search onChange={onSearch} searchPhrase={searchPhrase} placeholder="Поиск по имени" />
-			{monthFinances.map(({ id, date, expenseItem, sum }) => {
+			{finances.map(({ id, date, expenseItem, sum }) => {
 				return (
 					<FinanceRow
 						id={id}
@@ -68,7 +68,7 @@ const MonthFinancesContainer = ({ className }) => {
 			<Link to={'/finance/add'}>
 				<Button width="170px">Добавить расход</Button>
 			</Link>
-			{lastPage > 1 && <Pagination page={page} lastPage={lastPage} setPage={setPage} />}
+			{lastPage > 1 && <Pagination margin="20px 0 10px" page={page} lastPage={lastPage} setPage={setPage} />}
 		</ContentCard>
 	);
 };

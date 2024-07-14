@@ -18,6 +18,8 @@ router.post('/', authenticated, async (req, res) => {
 router.get('/', authenticated, async(req, res) => {
 	const { finances, lastPage } = await getFinances(
 		req.user.id,
+		req.query.startDate,
+		req.query.endDate,
 		req.query.search,
 		req.query.limit,
 		req.query.page

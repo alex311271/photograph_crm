@@ -14,7 +14,7 @@ import { request } from '../../../utils';
 
 const projectFormSchema = yup.object().shape({
 	client: yup.string(),
-	dateShooting: yup.date().required("Заполните дату съемки"),
+	dateShooting: yup.string().required("Заполните дату съемки"),
 	shootingTime: yup.string(),
 	durationShooting: yup.string(),
 	bookingLocation: yup.string(),
@@ -22,7 +22,7 @@ const projectFormSchema = yup.object().shape({
 	costShooting: yup.number(),
 	prepayment: yup.number(),
 	calculation: yup.number(),
-	date: yup.date(),
+	date: yup.string(),
 	projectCompleted: yup.string(),
 	clientId: yup.string(),
 });

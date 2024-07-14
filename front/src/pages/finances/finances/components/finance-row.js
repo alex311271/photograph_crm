@@ -9,8 +9,6 @@ const FinanceRowContainer = ({
 	expenseItem,
 	sum,
 	onFinanceRemove,
-	onEdit,
-	finance,
 }) => {
 	return (
 		<div className={className}>

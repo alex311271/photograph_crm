@@ -29,7 +29,7 @@ const ProjectContainer = ({ className }) => {
 				<div className="project-card">
 					<H2>Съёмка</H2>
 					<DataLine nameData={NAMES_TITLE.CLIENT_NAME} data={project.client} />
-					<DataLine nameData={NAMES_TITLE.DATE_SHOOTING} data={project.dateShooting} />
+					<DataLine nameData={NAMES_TITLE.DATE_SHOOTING} date={project.dateShooting} />
 					<DataLine nameData={NAMES_TITLE.SHOOTING_TIME} data={project.shootingTime} />
 					<DataLine
 						nameData={NAMES_TITLE.DURATION_SHOOTING}

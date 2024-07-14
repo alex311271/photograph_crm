@@ -13,8 +13,8 @@ const ProjectRowContainer = ({
 	return (
 		<div className={className}>
 			<div className="client-name">{client}</div>
-			<div className="phone-number">{dateShooting}</div>
-			<div className="telegram-link">{shootingTime}</div>
+			<div className="date-shooting">{dateShooting}</div>
+			<div className="shooting-time">{shootingTime}</div>
 			<div className="control-panel">
 				<Icon id="fa-trash-o" onClick={onProjectRemove} />
 				<Link to={`/project/${id}`}>
